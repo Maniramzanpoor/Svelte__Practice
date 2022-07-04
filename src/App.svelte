@@ -1,32 +1,24 @@
 <script>
-  let name = "Mani";
-  let beltColor = "Black";
-  const clickHandler = () => {
-    beltColor = "red";
-  };
-  const inputHandler = (t) => {
-    beltColor = t.target.value;
+  let person = [
+    { name: "Mani", age: "16", id: "0", beltColor: "red" },
+    { name: "Mahan", age: "12", id: "1", beltColor: "blue" },
+    { name: "Hoda", age: "41", id: "2", beltColor: "black" },
+  ];
+
+  const clickHandlerFunc = (id) => {
+    person = person.filter((person) => person.id != id);
   };
 </script>
 
 <main>
-  <h1>My Name is : {name}</h1>
-  <h2 style="color: {beltColor}">{beltColor}</h2>
-  <button on:click={clickHandler}>Update Clicked ME</button>
-  <input type="text" on:input={inputHandler} value={beltColor} />
+  {#each person as person (person.id)}
+    <div>
+      <h1>{person.name}</h1>
+      <p>age is : {person.age} beltColor is : {person.beltColor}</p>
+      <!-- inLine event Handler -->
+      <button on:click={() => clickHandlerFunc(person.id)}>Delete</button>
+    </div>
+  {:else}
+    <h1>there is no people to show ...</h1>
+  {/each}
 </main>
-
-<style>
-  main {
-    text-align: center;
-    padding: 1em;
-    max-width: 240px;
-    margin: 0 auto;
-  }
-
-  @media (min-width: 640px) {
-    main {
-      max-width: none;
-    }
-  }
-</style>
