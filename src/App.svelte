@@ -11,9 +11,9 @@
 
 <main>
   <h1>My Name is : {name}</h1>
-  <p>belt color is : {beltColor}</p>
+  <h2 style="color: {beltColor}">{beltColor}</h2>
   <button on:click={clickHandler}>Update Clicked ME</button>
-  <input type="text" on:input={inputHandler} value="beltColor" />
+  <input type="text" on:input={inputHandler} value={beltColor} />
 </main>
 
 <style>
@@ -24,17 +24,6 @@
     margin: 0 auto;
   }
 
-  h1 {
-    color: #ff3e00;
-    text-transform: uppercase;
-    font-size: 4em;
-    font-weight: 100;
-  }
-
-  p {
-    color: black;
-    font-size: xx-large;
-  }
   @media (min-width: 640px) {
     main {
       max-width: none;
